@@ -20,13 +20,18 @@ It includes support for:
         'website_sale',
     ],
     'data': [
-        'security/ir.model.access.csv',
-        'views/menuitems.xml',
+        # Security must be loaded after the models' views are defined.
+        # Views first, to ensure models are known and actions are created.
         'views/sadad_settings_views.xml',
         'views/payment_provider_views.xml',
         'views/payment_sadad_templates.xml',
         'views/sadad_recon_views.xml',
+        # Menu items depend on actions in the views above.
+        'views/menuitems.xml',
+        # Data files can depend on views (e.g., for `redirect_form_view_id`).
         'data/payment_provider_data.xml',
+        # Security file last is the safest approach.
+        'security/ir.model.access.csv',
     ],
     'application': True,
     'installable': True,
