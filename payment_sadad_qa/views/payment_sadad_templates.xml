@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="redirect_form">
+        <html lang="en">
+            <head>
+                <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+                <title>SADAD Checkout</title>
+            </head>
+            <body>
+                <form t-att-action="sadad_form_url" method="post" name="redirect_form">
+                    <input type="hidden" t-att-value="payload.get('merchant_id')" name="merchant_id"/>
+                    <input type="hidden" t-att-value="payload.get('ORDER_ID')" name="ORDER_ID"/>
+                    <input type="hidden" t-att-value="payload.get('WEBSITE')" name="WEBSITE"/>
+                    <input type="hidden" t-att-value="payload.get('TXN_AMOUNT')" name="TXN_AMOUNT"/>
+                    <input type="hidden" t-att-value="payload.get('CALLBACK_URL')" name="CALLBACK_URL"/>
+                    <input type="hidden" t-att-value="payload.get('EMAIL')" name="EMAIL"/>
+                    <input type="hidden" t-att-value="payload.get('MOBILE_NO')" name="MOBILE_NO"/>
+                    <input type="hidden" t-att-value="payload.get('txnDate')" name="txnDate"/>
+                    <input type="hidden" t-att-value="payload.get('SADAD_WEBCHECKOUT_PAGE_LANGUAGE')" name="SADAD_WEBCHECKOUT_PAGE_LANGUAGE"/>
+                    <input type="hidden" t-att-value="payload.get('checksumhash')" name="checksumhash"/>
+
+                    <!-- Product details are sent but not included in the signature -->
+                    <t t-foreach="payload.get('productdetail', [])" t-as="product">
+                        <input type="hidden" t-att-name="'productdetail[' + str(product_index) + '][order_id]'" t-att-value="product.get('order_id')"/>
+                        <input type="hidden" t-att-name="'productdetail[' + str(product_index) + '][amount]'" t-att-value="product.get('amount')"/>
+                        <input type="hidden" t-att-name="'productdetail[' + str(product_index) + '][quantity]'" t-att-value="product.get('quantity')"/>
+                        <input type="hidden" t-att-name="'productdetail[' + str(product_index) + '][itemname]'" t-att-value="product.get('itemname')"/>
+                    </t>
+                </form>
+                <script>
+                    document.redirect_form.submit();
+                </script>
+                <p>Please wait, you are being redirected to the SADAD payment page...</p>
+            </body>
+        </html>
+    </template>
+</odoo>

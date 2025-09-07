@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--
+        This menu item is a shortcut to the SADAD Settings section
+        within the general Website settings.
+        -->
+        <record id="menu_sadad_qa_settings" model="ir.ui.menu">
+            <field name="name">SADAD Settings</field>
+            <field name="parent_id" ref="website.menu_website_configuration"/>
+            <field name="action" ref="base.action_res_config_settings_execute"/>
+            <field name="sequence">210</field>
+        </record>
+
+        <!-- Menu item for the Reconciliation Wizard -->
+        <record id="menu_sadad_qa_reconciliation" model="ir.ui.menu">
+            <field name="name">SADAD Reconciliation</field>
+            <field name="parent_id" ref="website.menu_website_configuration"/>
+            <field name="action" ref="payment_sadad_qa.action_sadad_recon_wizard"/>
+            <field name="sequence">220</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Action to open the Reconciliation Wizard -->
+    <record id="action_sadad_recon_wizard" model="ir.actions.act_window">
+        <field name="name">SADAD Reconciliation</field>
+        <field name="res_model">sadad.recon.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Form View for the Reconciliation Wizard -->
+    <record id="sadad_recon_wizard_view_form" model="ir.ui.view">
+        <field name="name">sadad.recon.wizard.form</field>
+        <field name="model">sadad.recon.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <div class="alert alert-info" role="alert">
+                    <strong>How to use:</strong>
+                    <ol>
+                        <li>Select a date range for the transactions you want to reconcile.</li>
+                        <li>Upload the official statement CSV file provided by SADAD.</li>
+                        <li>Click <strong>Run Reconciliation</strong>.</li>
+                        <li>Review the results in the 'Results' tab below.</li>
+                        <li>(Optional) You can also <strong>Export Odoo Txs</strong> for the selected period to compare manually.</li>
+                    </ol>
+                </div>
+                <group>
+                    <group>
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                    </group>
+                    <group>
+                        <field name="statement_file" filename="statement_filename"/>
+                        <field name="statement_filename" invisible="1"/>
+                    </group>
+                </group>
+
+                <notebook>
+                    <page string="Results" name="results_page">
+                        <field name="line_ids" readonly="1">
+                            <tree>
+                                <field name="status" decoration-success="status == 'OK'" decoration-warning="status == 'AMOUNT_MISMATCH'" decoration-danger="status in ('NOT_IN_ODOO', 'NOT_IN_SADAD')"/>
+                                <field name="transaction_date"/>
+                                <field name="odoo_tx_ref"/>
+                                <field name="sadad_tx_ref"/>
+                                <field name="odoo_amount" sum="Total Odoo"/>
+                                <field name="sadad_amount" sum="Total SADAD"/>
+                                <field name="notes"/>
+                            </tree>
+                        </field>
+                        <group class="oe_right" col="4">
+                            <label for="recon_result_file" string="Download Reconciliation Result"/>
+                            <div>
+                                <field name="recon_result_file" readonly="1" filename="recon_result_filename"/>
+                                <field name="recon_result_filename" invisible="1"/>
+                            </div>
+                        </group>
+                    </page>
+                </notebook>
+
+                <footer>
+                    <button name="action_run_reconciliation" string="Run Reconciliation" type="object" class="btn-primary" data-hotkey="q"/>
+                    <button name="action_export_odoo_tx" string="Export Odoo Txs" type="object" class="btn-secondary" data-hotkey="w"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

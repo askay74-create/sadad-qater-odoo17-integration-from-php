@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!--
+        This record creates the SADAD Payment Provider upon module installation.
+        It is disabled by default. The user must configure it and enable it.
+        The `redirect_form_view_id` refers to the template that will be created in
+        `views/payment_sadad_templates.xml`.
+        -->
+        <record id="payment_provider_sadad_qa" model="payment.provider">
+            <field name="name">SADAD (Qatar)</field>
+            <field name="code">sadad_qa</field>
+            <!-- An icon can be added here once available, e.g.,
+            <field name="image_128" type="base64" file="payment_sadad_qa/static/description/icon.png"/>
+            -->
+            <field name="module_id" ref="base.module_payment_sadad_qa"/>
+            <field name="payment_method_ids" eval="[(6, 0, [ref('payment.payment_method_card')])]"/>
+
+            <!-- The provider is disabled by default. User must enable it after configuration. -->
+            <field name="state">disabled</field>
+
+            <!-- This must match the ID of the redirect form template in payment_sadad_templates.xml -->
+            <field name="redirect_form_view_id" ref="payment_sadad_qa.redirect_form"/>
+
+            <!-- SADAD is a redirect-based provider; tokenization is not applicable. -->
+            <field name="allow_tokenization">False</field>
+
+            <!-- Assign to the main company by default. -->
+            <field name="company_id" ref="base.main_company"/>
+        </record>
+    </data>
+</odoo>

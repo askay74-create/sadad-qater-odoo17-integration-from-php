@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SADAD QA Payment Provider</title>
+    <style>
+        body {
+            font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .header {
+            background-color: #714B67; /* Odoo Purple */
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-radius: 3px 3px 0 0;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .content {
+            padding: 20px;
+        }
+        .content h2 {
+            color: #714B67;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        .features-list {
+            list-style: none;
+            padding: 0;
+        }
+        .features-list li {
+            background: #f9f9f9;
+            border-left: 4px solid #875A7B;
+            margin-bottom: 10px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .features-list .icon {
+            font-size: 1.5em;
+            margin-right: 15px;
+            color: #714B67;
+        }
+        .badge {
+            background-color: #00A09D; /* Odoo Green */
+            color: white;
+            padding: 5px 10px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section class="header">
+            <h1>SADAD (Qatar) Payment Provider</h1>
+        </section>
+        <section class="content">
+            <p>
+                Seamlessly integrate Qatar's leading payment gateway, <strong>SADAD Web Checkout</strong>, with your Odoo 17 Community Edition store. This module provides a complete, secure, and robust solution for accepting online payments.
+            </p>
+
+            <h2>
+                <span class="icon">🚀</span> Key Features
+            </h2>
+            <ul class="features-list">
+                <li><span class="icon">💳</span> Secure redirect payment flow to SADAD's hosted page.</li>
+                <li><span class="icon">⚙️</span> **Dynamic Settings Page**: Manage your Merchant ID, Test/Live Secrets, and Language without any code changes.</li>
+                <li><span class="icon">🔐</span> **SHA-256 Signature Verification**: End-to-end security for requests, callbacks, and webhooks.</li>
+                <li><span class="icon">🔄</span> **Reliable Notifications**: Support for both immediate browser callbacks and asynchronous server-to-server webhooks (IPN).</li>
+                <li><span class="icon">📊</span> **Financial Reconciliation Wizard**: A powerful tool to match your Odoo transactions against SADAD's CSV statements, quickly identifying any discrepancies. <span class="badge">Pro Feature</span></li>
+                <li><span class="icon">🧪</span> **Developer-Friendly**: Includes a ready-to-use Postman collection for easy testing of all notification endpoints.</li>
+            </ul>
+
+            <h2>
+                <span class="icon">🔧</span> Easy Configuration
+            </h2>
+            <p>
+                All credentials and settings are managed in a single, user-friendly screen within Odoo (**Website ‣ Configuration ‣ SADAD Settings**). Switch between Test and Production environments with a single click.
+            </p>
+
+            <h2>
+                <span class="icon">🔍</span> Powerful Reconciliation
+            </h2>
+            <p>
+                Save hours of manual work with the built-in reconciliation tool. Simply upload your statement from the SADAD panel, and the wizard will automatically compare it with your Odoo records, providing a clear report of matched transactions, amount mismatches, and items missing from either system.
+            </p>
+        </section>
+    </div>
+</body>
+</html>
