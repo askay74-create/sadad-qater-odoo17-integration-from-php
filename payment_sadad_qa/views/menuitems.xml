@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <!--
-        This action opens our standalone SADAD settings view.
-        -->
+        <!-- Action for the standalone settings view -->
         <record id="action_sadad_config_settings" model="ir.actions.act_window">
             <field name="name">SADAD Settings</field>
             <field name="type">ir.actions.act_window</field>
@@ -11,24 +9,21 @@
             <field name="view_mode">form</field>
             <field name="target">inline</field>
             <field name="context">{'module' : 'payment_sadad_qa', 'bin_size': False}</field>
-            <!-- Explicitly call our custom view -->
             <field name="view_id" ref="payment_sadad_qa.sadad_config_settings_view_form"/>
         </record>
 
-        <!--
-        This menu item now calls our specific action, not the generic one.
-        -->
+        <!-- Menu item for Settings, now under the main Settings app -->
         <record id="menu_sadad_qa_settings" model="ir.ui.menu">
             <field name="name">SADAD Settings</field>
-            <field name="parent_id" ref="website.menu_website_configuration"/>
+            <field name="parent_id" ref="base.menu_administration"/>
             <field name="action" ref="payment_sadad_qa.action_sadad_config_settings"/>
             <field name="sequence">210</field>
         </record>
 
-        <!-- Menu item for the Reconciliation Wizard (unchanged) -->
+        <!-- Menu item for Reconciliation, now under the main Settings app -->
         <record id="menu_sadad_qa_reconciliation" model="ir.ui.menu">
             <field name="name">SADAD Reconciliation</field>
-            <field name="parent_id" ref="website.menu_website_configuration"/>
+            <field name="parent_id" ref="base.menu_administration"/>
             <field name="action" ref="payment_sadad_qa.action_sadad_recon_wizard"/>
             <field name="sequence">220</field>
         </record>
