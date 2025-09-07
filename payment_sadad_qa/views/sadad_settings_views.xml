@@ -98,6 +98,32 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-12 col-lg-6 o_setting_box">
+                                    <div class="o_setting_right_pane">
+                                        <label for="sadad_website_domain"/>
+                                        <div class="text-muted">
+                                            Manually set the Website Domain for SADAD requests.
+                                        </div>
+                                        <div class="content-group">
+                                            <div class="mt16">
+                                                <field name="sadad_website_domain" placeholder="e.g. www.yourstore.com"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-6 o_setting_box">
+                                    <div class="o_setting_right_pane">
+                                        <label for="sadad_default_mobile"/>
+                                        <div class="text-muted">
+                                            Fallback mobile number if customer's is missing.
+                                        </div>
+                                        <div class="content-group">
+                                            <div class="mt16">
+                                                <field name="sadad_default_mobile" placeholder="e.g. 97412345678"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </sheet>

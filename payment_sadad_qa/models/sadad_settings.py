@@ -42,3 +42,14 @@ class ResConfigSettings(models.TransientModel):
         config_parameter='payment_sadad_qa.debug',
         help="Enable to log detailed API requests and responses for debugging purposes."
     )
+
+    sadad_website_domain = fields.Char(
+        string="Website Domain",
+        config_parameter='payment_sadad_qa.website_domain',
+        help="The domain name to be sent as the WEBSITE parameter. If blank, Odoo's base URL will be used."
+    )
+    sadad_default_mobile = fields.Char(
+        string="Default Mobile Number",
+        config_parameter='payment_sadad_qa.default_mobile',
+        help="A fallback mobile number to use if the customer does not have one on their record."
+    )

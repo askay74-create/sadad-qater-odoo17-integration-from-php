@@ -94,6 +94,15 @@ class SadadPaymentProvider(models.Model):
         if not merchant_id:
             raise ValidationError(_("SADAD: Merchant ID is not configured."))
 
+        # Use configured domain or fall back to base_url
+        website_domain = config_sudo.get_param('payment_sadad_qa.website_domain')
+        if not website_domain:
+            website_domain = self.get_base_url().replace('https://', '').replace('http://', '')
+
+        # Use partner phone or fall back to configured default
+        default_mobile = config_sudo.get_param('payment_sadad_qa.default_mobile')
+        mobile_no = transaction.partner_phone or default_mobile or ''
+
         product_details = []
         for line in transaction.sale_order_ids.order_line:
             product_details.append({
@@ -106,11 +115,11 @@ class SadadPaymentProvider(models.Model):
         payload = {
             'merchant_id': merchant_id,
             'ORDER_ID': transaction.reference,
-            'WEBSITE': self.get_base_url().replace('https://', '').replace('http://', ''),
+            'WEBSITE': website_domain,
             'TXN_AMOUNT': "%.2f" % transaction.amount,
             'CALLBACK_URL': urljoin(base_url, '/payment/sadad/return'),
             'EMAIL': transaction.partner_email,
-            'MOBILE_NO': transaction.partner_phone or '',
+            'MOBILE_NO': mobile_no,
             'txnDate': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
             'SADAD_WEBCHECKOUT_PAGE_LANGUAGE': config_sudo.get_param('payment_sadad_qa.language', 'eng'),
             'productdetail': product_details,
