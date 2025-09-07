@@ -21,10 +21,10 @@
 
                     <!-- Product details are sent but not included in the signature -->
                     <t t-foreach="payload.get('productdetail', [])" t-as="product">
-                        <input type="hidden" t-att-name="'productdetail[' + str(product_index) + '][order_id]'" t-att-value="product.get('order_id')"/>
-                        <input type="hidden" t-att-name="'productdetail[' + str(product_index) + '][amount]'" t-att-value="product.get('amount')"/>
-                        <input type="hidden" t-att-name="'productdetail[' + str(product_index) + '][quantity]'" t-att-value="product.get('quantity')"/>
-                        <input type="hidden" t-att-name="'productdetail[' + str(product_index) + '][itemname]'" t-att-value="product.get('itemname')"/>
+                        <input type="hidden" t-att-name="f'productdetail[{product_index}][order_id]'" t-att-value="product.get('order_id')"/>
+                        <input type="hidden" t-att-name="f'productdetail[{product_index}][amount]'" t-att-value="product.get('amount')"/>
+                        <input type="hidden" t-att-name="f'productdetail[{product_index}][quantity]'" t-att-value="product.get('quantity')"/>
+                        <input type="hidden" t-att-name="f'productdetail[{product_index}][itemname]'" t-att-value="product.get('itemname')"/>
                     </t>
                 </form>
                 <script>
