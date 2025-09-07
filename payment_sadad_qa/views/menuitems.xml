@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <!-- Action for the standalone settings view -->
+        <!-- Action for the standalone settings view (unchanged) -->
         <record id="action_sadad_config_settings" model="ir.actions.act_window">
             <field name="name">SADAD Settings</field>
             <field name="type">ir.actions.act_window</field>
@@ -12,20 +12,27 @@
             <field name="view_id" ref="payment_sadad_qa.sadad_config_settings_view_form"/>
         </record>
 
-        <!-- Menu item for Settings, now under the main Settings app -->
-        <record id="menu_sadad_qa_settings" model="ir.ui.menu">
-            <field name="name">SADAD Settings</field>
-            <field name="parent_id" ref="base.menu_administration"/>
-            <field name="action" ref="payment_sadad_qa.action_sadad_config_settings"/>
-            <field name="sequence">210</field>
+        <!-- 1. NEW: Top-level menu for the SADAD Application -->
+        <record id="menu_sadad_qa_root" model="ir.ui.menu">
+            <field name="name">SADAD</field>
+            <field name="sequence">100</field>
+            <!-- A web_icon can be added here for the app switcher -->
         </record>
 
-        <!-- Menu item for Reconciliation, now under the main Settings app -->
+        <!-- 2. CHANGED: Settings menu is now a child of our new top-level menu -->
+        <record id="menu_sadad_qa_settings" model="ir.ui.menu">
+            <field name="name">Settings</field>
+            <field name="parent_id" ref="payment_sadad_qa.menu_sadad_qa_root"/>
+            <field name="action" ref="payment_sadad_qa.action_sadad_config_settings"/>
+            <field name="sequence">10</field>
+        </record>
+
+        <!-- Menu item for the Reconciliation Wizard -->
         <record id="menu_sadad_qa_reconciliation" model="ir.ui.menu">
-            <field name="name">SADAD Reconciliation</field>
-            <field name="parent_id" ref="base.menu_administration"/>
+            <field name="name">Reconciliation</field>
+            <field name="parent_id" ref="payment_sadad_qa.menu_sadad_qa_root"/>
             <field name="action" ref="payment_sadad_qa.action_sadad_recon_wizard"/>
-            <field name="sequence">220</field>
+            <field name="sequence">20</field>
         </record>
     </data>
 </odoo>
