@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!--
+        Access rights for the SADAD Reconciliation Wizard.
+        Using XML instead of CSV for more robust dependency handling.
+        -->
+        <record id="access_sadad_recon_wizard" model="ir.model.access">
+            <field name="name">access.sadad.recon.wizard</field>
+            <!-- This ref to the model ID ensures Odoo finds the model before applying the rule -->
+            <field name="model_id" ref="model_sadad_recon_wizard"/>
+            <field name="group_id" ref="base.group_system"/>
+            <field name="perm_read">1</field>
+            <field name="perm_write">1</field>
+            <field name="perm_create">1</field>
+            <field name="perm_unlink">1</field>
+        </record>
+
+        <record id="access_sadad_recon_line" model="ir.model.access">
+            <field name="name">access.sadad.recon.line</field>
+            <field name="model_id" ref="model_sadad_recon_line"/>
+            <field name="group_id" ref="base.group_system"/>
+            <field name="perm_read">1</field>
+            <field name="perm_write">1</field>
+            <field name="perm_create">1</field>
+            <field name="perm_unlink">1</field>
+        </record>
+    </data>
+</odoo>
