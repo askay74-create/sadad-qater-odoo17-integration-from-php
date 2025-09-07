@@ -112,7 +112,8 @@ class SadadPaymentProvider(models.Model):
                 'itemname': line.name.replace("'", "").replace('"', ''), # Remove quotes from item names
             })
 
-        payload = {
+        # The user's example uses 'sadad_values' as the dict key for the template.
+        sadad_values = {
             'merchant_id': merchant_id,
             'ORDER_ID': transaction.reference,
             'WEBSITE': website_domain,
@@ -125,11 +126,13 @@ class SadadPaymentProvider(models.Model):
             'productdetail': product_details,
         }
 
-        payload['checksumhash'] = self._sadad_generate_signature(payload)
+        # The user's example uses 'signature' as the key, not 'checksumhash'.
+        signature = self._sadad_generate_signature(sadad_values)
 
         return {
-            'sadad_form_url': sadad_urls['sadad_form_url'],
-            'payload': payload,
+            'api_url': sadad_urls['sadad_form_url'],
+            'sadad_values': sadad_values,
+            'signature': signature,
         }
 
     def _get_tx_from_notification_data(self, provider_code, notification_data):

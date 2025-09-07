@@ -20,7 +20,7 @@
             <field name="state">disabled</field>
 
             <!-- This must match the ID of the redirect form template in payment_sadad_templates.xml -->
-            <field name="redirect_form_view_id" ref="payment_sadad_qa.redirect_form"/>
+            <field name="redirect_form_view_id" ref="payment_sadad_qa.sadad_form"/>
 
             <!-- SADAD is a redirect-based provider; tokenization is not applicable. -->
             <field name="allow_tokenization">False</field>
