@@ -18,6 +18,7 @@ It includes support for:
     'depends': [
         'payment',
         'website_sale',
+        'base_setup',
     ],
     'data': [
         # Views must be loaded before the data and security files that depend on them.
