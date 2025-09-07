@@ -23,7 +23,6 @@ It includes support for:
     'data': [
         # Views must be loaded before the data and security files that depend on them.
         'views/sadad_settings_views.xml',
-        'views/payment_provider_views.xml',
         'views/payment_sadad_templates.xml',
         'views/sadad_recon_views.xml',
         'views/menuitems.xml',
