@@ -1,95 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <record id="res_config_settings_view_form" model="ir.ui.view">
-            <field name="name">res.config.settings.view.form.inherit.sadad</field>
+        <!--
+        This is a standalone view for SADAD settings.
+        It does not inherit from any other view to avoid XPath errors.
+        -->
+        <record id="sadad_config_settings_view_form" model="ir.ui.view">
+            <field name="name">sadad.config.settings.view.form</field>
             <field name="model">res.config.settings</field>
-            <field name="inherit_id" ref="website.res_config_settings_view_form"/>
+            <field name="priority" eval="99"/>
             <field name="arch" type="xml">
-                <xpath expr="//div[hasclass('app_settings_block')]" position="inside">
-                    <h2>SADAD (Qatar) Settings</h2>
-                    <div class="row mt16 o_settings_container" id="sadad_qa_settings">
-                        <div class="col-12 col-lg-6 o_setting_box">
-                            <div class="o_setting_right_pane">
-                                <label for="sadad_merchant_id"/>
-                                <div class="text-muted">
-                                    Your official Merchant ID from the SADAD Panel.
-                                </div>
-                                <div class="content-group">
-                                    <div class="mt16">
-                                        <field name="sadad_merchant_id" class="o_website_form_input"/>
+                <form class="oe_form_configuration">
+                    <header>
+                        <button string="Apply" type="object" name="execute" class="btn-primary"/>
+                        <button string="Cancel" type="object" name="cancel" class="btn-secondary" special="cancel"/>
+                    </header>
+                    <sheet>
+                        <div class="app_settings_block" data-string="SADAD" string="SADAD" data-key="payment_sadad_qa">
+                            <h2>SADAD (Qatar) Settings</h2>
+                            <div class="row mt16 o_settings_container" id="sadad_qa_settings">
+                                <div class="col-12 col-lg-6 o_setting_box">
+                                    <div class="o_setting_right_pane">
+                                        <label for="sadad_merchant_id"/>
+                                        <div class="text-muted">
+                                            Your official Merchant ID from the SADAD Panel.
+                                        </div>
+                                        <div class="content-group">
+                                            <div class="mt16">
+                                                <field name="sadad_merchant_id" class="o_website_form_input"/>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-6 o_setting_box">
-                            <div class="o_setting_right_pane">
-                                <label for="sadad_environment"/>
-                                <div class="text-muted">
-                                    Switch between Test and Production environments.
-                                </div>
-                                <div class="content-group">
-                                    <div class="mt16">
-                                        <field name="sadad_environment" widget="radio"/>
+                                <div class="col-12 col-lg-6 o_setting_box">
+                                    <div class="o_setting_right_pane">
+                                        <label for="sadad_environment"/>
+                                        <div class="text-muted">
+                                            Switch between Test and Production environments.
+                                        </div>
+                                        <div class="content-group">
+                                            <div class="mt16">
+                                                <field name="sadad_environment" widget="radio"/>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-6 o_setting_box">
-                            <div class="o_setting_right_pane">
-                                <label for="sadad_test_secret"/>
-                                <div class="text-muted">
-                                    Secret key for the <strong>Test</strong> environment.
-                                </div>
-                                <div class="content-group">
-                                    <div class="mt16">
-                                        <field name="sadad_test_secret" password="True"/>
+                                <div class="col-12 col-lg-6 o_setting_box">
+                                    <div class="o_setting_right_pane">
+                                        <label for="sadad_test_secret"/>
+                                        <div class="text-muted">
+                                            Secret key for the <strong>Test</strong> environment.
+                                        </div>
+                                        <div class="content-group">
+                                            <div class="mt16">
+                                                <field name="sadad_test_secret" password="True"/>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-6 o_setting_box">
-                            <div class="o_setting_right_pane">
-                                <label for="sadad_live_secret"/>
-                                <div class="text-muted">
-                                    Secret key for the <strong>Production</strong> environment.
-                                </div>
-                                <div class="content-group">
-                                    <div class="mt16">
-                                        <field name="sadad_live_secret" password="True"/>
+                                <div class="col-12 col-lg-6 o_setting_box">
+                                    <div class="o_setting_right_pane">
+                                        <label for="sadad_live_secret"/>
+                                        <div class="text-muted">
+                                            Secret key for the <strong>Production</strong> environment.
+                                        </div>
+                                        <div class="content-group">
+                                            <div class="mt16">
+                                                <field name="sadad_live_secret" password="True"/>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-6 o_setting_box">
-                           <div class="o_setting_right_pane">
-                               <label for="sadad_language"/>
-                               <div class="text-muted">
-                                   Default language for the SADAD checkout page.
-                               </div>
-                               <div class="content-group">
-                                   <div class="mt16">
-                                       <field name="sadad_language" widget="radio"/>
+                                <div class="col-12 col-lg-6 o_setting_box">
+                                   <div class="o_setting_right_pane">
+                                       <label for="sadad_language"/>
+                                       <div class="text-muted">
+                                           Default language for the SADAD checkout page.
+                                       </div>
+                                       <div class="content-group">
+                                           <div class="mt16">
+                                               <field name="sadad_language" widget="radio"/>
+                                           </div>
+                                       </div>
                                    </div>
-                               </div>
-                           </div>
-                        </div>
-                        <div class="col-12 col-lg-6 o_setting_box">
-                            <div class="o_setting_left_pane"/>
-                            <div class="o_setting_right_pane">
-                                <div class="content-group">
-                                    <div class="mt16">
-                                        <field name="sadad_debug" class="o_light_label"/>
-                                        <label for="sadad_debug"/>
-                                    </div>
-                                    <div class="text-muted">
-                                        Log requests and responses for debugging. Do not use in production.
+                                </div>
+                                <div class="col-12 col-lg-6 o_setting_box">
+                                    <div class="o_setting_left_pane"/>
+                                    <div class="o_setting_right_pane">
+                                        <div class="content-group">
+                                            <div class="mt16">
+                                                <field name="sadad_debug" class="o_light_label"/>
+                                                <label for="sadad_debug"/>
+                                            </div>
+                                            <div class="text-muted">
+                                                Log requests and responses for debugging. Do not use in production.
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </xpath>
+                    </sheet>
+                </form>
             </field>
         </record>
     </data>

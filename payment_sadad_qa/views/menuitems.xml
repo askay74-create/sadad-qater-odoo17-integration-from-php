@@ -2,17 +2,30 @@
 <odoo>
     <data>
         <!--
-        This menu item is a shortcut to the SADAD Settings section
-        within the general Website settings.
+        This action opens our standalone SADAD settings view.
+        -->
+        <record id="action_sadad_config_settings" model="ir.actions.act_window">
+            <field name="name">SADAD Settings</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+            <field name="context">{'module' : 'payment_sadad_qa', 'bin_size': False}</field>
+            <!-- Explicitly call our custom view -->
+            <field name="view_id" ref="payment_sadad_qa.sadad_config_settings_view_form"/>
+        </record>
+
+        <!--
+        This menu item now calls our specific action, not the generic one.
         -->
         <record id="menu_sadad_qa_settings" model="ir.ui.menu">
             <field name="name">SADAD Settings</field>
             <field name="parent_id" ref="website.menu_website_configuration"/>
-            <field name="action" ref="base.action_res_config_settings_execute"/>
+            <field name="action" ref="payment_sadad_qa.action_sadad_config_settings"/>
             <field name="sequence">210</field>
         </record>
 
-        <!-- Menu item for the Reconciliation Wizard -->
+        <!-- Menu item for the Reconciliation Wizard (unchanged) -->
         <record id="menu_sadad_qa_reconciliation" model="ir.ui.menu">
             <field name="name">SADAD Reconciliation</field>
             <field name="parent_id" ref="website.menu_website_configuration"/>
